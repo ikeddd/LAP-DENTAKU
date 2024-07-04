@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>800m Lap Time Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .lap-time-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .lap-time-group {
+        flex: 1;
+        margin-right: 20px;
+    }
+    button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+    <h2>800m Lap Time Calculator</h2>
+    <div class="form-group">
+        <label for="splitTime1">Enter Split Time 1 (50m):</label>
+        <input type="text" id="splitTime1" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime2">Enter Split Time 2 (100m):</label>
+        <input type="text" id="splitTime2" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime3">Enter Split Time 3 (150m):</label>
+        <input type="text" id="splitTime3" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime4">Enter Split Time 4 (200m):</label>
+        <input type="text" id="splitTime4" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime5">Enter Split Time 5 (250m):</label>
+        <input type="text" id="splitTime5" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime6">Enter Split Time 6 (300m):</label>
+        <input type="text" id="splitTime6" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime7">Enter Split Time 7 (350m):</label>
+        <input type="text" id="splitTime7" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime8">Enter Split Time 8 (400m):</label>
+        <input type="text" id="splitTime8" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime9">Enter Split Time 9 (450m):</label>
+        <input type="text" id="splitTime9" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime10">Enter Split Time 10 (500m):</label>
+        <input type="text" id="splitTime10" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime11">Enter Split Time 11 (550m):</label>
+        <input type="text" id="splitTime11" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime12">Enter Split Time 12 (600m):</label>
+        <input type="text" id="splitTime12" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime13">Enter Split Time 13 (650m):</label>
+        <input type="text" id="splitTime13" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime14">Enter Split Time 14 (700m):</label>
+        <input type="text" id="splitTime14" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="splitTime15">Enter Split Time 15 (750m):</label>
+        <input type="text" id="splitTime15" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="totalTime">Enter Total Time (800m):</label>
+        <input type="text" id="totalTime" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <button onclick="calculateLapTimes()">Calculate Lap Times</button>
+    <div class="lap-time-container">
+        <div class="lap-time-group" id="lapTimes50m"></div>
+        <div class="lap-time-group" id="lapTimes100m"></div>
+        <div class="lap-time-group" id="lapTimes200m"></div>
+    </div>
+
+    <script>
+        function calculateLapTimes() {
+            const splitTime1 = parseTimeInput(document.getElementById("splitTime1").value);
+            const splitTime2 = parseTimeInput(document.getElementById("splitTime2").value);
+            const splitTime3 = parseTimeInput(document.getElementById("splitTime3").value);
+            const splitTime4 = parseTimeInput(document.getElementById("splitTime4").value);
+            const splitTime5 = parseTimeInput(document.getElementById("splitTime5").value);
+            const splitTime6 = parseTimeInput(document.getElementById("splitTime6").value);
+            const splitTime7 = parseTimeInput(document.getElementById("splitTime7").value);
+            const splitTime8 = parseTimeInput(document.getElementById("splitTime8").value);
+            const splitTime9 = parseTimeInput(document.getElementById("splitTime9").value);
+            const splitTime10 = parseTimeInput(document.getElementById("splitTime10").value);
+            const splitTime11 = parseTimeInput(document.getElementById("splitTime11").value);
+            const splitTime12 = parseTimeInput(document.getElementById("splitTime12").value);
+            const splitTime13 = parseTimeInput(document.getElementById("splitTime13").value);
+            const splitTime14 = parseTimeInput(document.getElementById("splitTime14").value);
+            const splitTime15 = parseTimeInput(document.getElementById("splitTime15").value);
+            const totalTimeInput = parseTimeInput(document.getElementById("totalTime").value);
+
+            function parseTimeInput(timeString) {
+                if (!timeString) return 0;
+                const timeParts = timeString.split(":");
+                if (timeParts.length === 1) {
+                    return parseFloat(timeParts[0]);
+                } else if (timeParts.length === 2) {
+                    const minutes = parseInt(timeParts[0], 10);
+                    const seconds = parseFloat(timeParts[1]);
+                    return minutes * 60 + seconds;
+                }
+                return 0;
+            }
+
+            const lapTimes50m = [];
+            lapTimes50m.push(splitTime1);
+            lapTimes50m.push(splitTime2 - splitTime1);
+            lapTimes50m.push(splitTime3 - splitTime2);
+            lapTimes50m.push(splitTime4 - splitTime3);
+            lapTimes50m.push(splitTime5 - splitTime4);
+            lapTimes50m.push(splitTime6 - splitTime5);
+            lapTimes50m.push(splitTime7 - splitTime6);
+            lapTimes50m.push(splitTime8 - splitTime7);
+            lapTimes50m.push(splitTime9 - splitTime8);
+            lapTimes50m.push(splitTime10 - splitTime9);
+            lapTimes50m.push(splitTime11 - splitTime10);
+            lapTimes50m.push(splitTime12 - splitTime11);
+            lapTimes50m.push(splitTime13 - splitTime12);
+            lapTimes50m.push(splitTime14 - splitTime13);
+            lapTimes50m.push(splitTime15 - splitTime14);
+            lapTimes50m.push(totalTimeInput - splitTime15);
+
+            const lapTimes100m = [];
+            lapTimes100m.push(splitTime2);
+            lapTimes100m.push(splitTime4 - splitTime2);
+            lapTimes100m.push(splitTime6 - splitTime4);
+            lapTimes100m.push(splitTime8 - splitTime6);
+            lapTimes100m.push(splitTime10 - splitTime8);
+            lapTimes100m.push(splitTime12 - splitTime10);
+            lapTimes100m.push(splitTime14 - splitTime12);
+            lapTimes100m.push(totalTimeInput - splitTime14);
+
+            const lapTimes200m = [];
+            lapTimes200m.push(splitTime4);
+            lapTimes200m.push(splitTime8 - splitTime4);
+            lapTimes200m.push(splitTime12 - splitTime8);
+            lapTimes200m.push(totalTimeInput - splitTime12);
+
+            displayLapTimes(lapTimes50m, "lapTimes50m", "50m Lap Times", ["0m〜50m", "50m〜100m", "100m〜150m", "150m〜200m", "200m〜250m", "250m〜300m", "300m〜350m", "350m〜400m", "400m〜450m", "450m〜500m", "500m〜550m", "550m〜600m", "600m〜650m", "650m〜700m", "700m〜750m", "750m〜800m"]);
+            displayLapTimes(lapTimes100m, "lapTimes100m", "100m Lap Times", ["0m〜100m", "100m〜200m", "200m〜300m", "300m〜400m", "400m〜500m", "500m〜600m", "600m〜700m", "700m〜800m"]);
+            displayLapTimes(lapTimes200m, "lapTimes200m", "200m Lap Times", ["0m〜200m", "200m〜400m", "400m〜600m", "600m〜800m"]);
+        }
+
+        function displayLapTimes(lapTimes, containerId, title, intervalNames) {
+            const lapTimesContainer = document.getElementById(containerId);
+            lapTimesContainer.innerHTML = `<h3>${title}</h3>`;
+            for (let i = 0; i < lapTimes.length; i++) {
+                const lapTime = lapTimes[i];
+                const intervalName = intervalNames[i];
+                const p = document.createElement("p");
+                p.textContent = `${intervalName}: ${formatTime(lapTime)}`;
+                lapTimesContainer.appendChild(p);
+            }
+        }
+
+        function formatTime(timeInSeconds) {
+            if (timeInSeconds >= 60) {
+                const minutes = Math.floor(timeInSeconds / 60);
+                const seconds = (timeInSeconds % 60).toFixed(2);
+                return `${minutes}:${seconds.padStart(5, '0')}`;
+            } else {
+                return `${timeInSeconds.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1500m Lap Time Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .lap-time-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .lap-time-group {
+        flex: 1;
+        margin-right: 20px;
+    }
+    button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+    <h2>1500m Lap Time Calculator</h2>
+    <div id="split-time-inputs">
+        <!-- 50m毎のスプリットタイムの入力フィールドを作成 -->
+        <div class="form-group">
+            <label for="splitTime1">Enter Split Time 1 (50m):</label>
+            <input type="text" id="splitTime1" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime2">Enter Split Time 2 (100m):</label>
+            <input type="text" id="splitTime2" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime3">Enter Split Time 3 (150m):</label>
+            <input type="text" id="splitTime3" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime4">Enter Split Time 4 (200m):</label>
+            <input type="text" id="splitTime4" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime5">Enter Split Time 5 (250m):</label>
+            <input type="text" id="splitTime5" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime6">Enter Split Time 6 (300m):</label>
+            <input type="text" id="splitTime6" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime7">Enter Split Time 7 (350m):</label>
+            <input type="text" id="splitTime7" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime8">Enter Split Time 8 (400m):</label>
+            <input type="text" id="splitTime8" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime9">Enter Split Time 9 (450m):</label>
+            <input type="text" id="splitTime9" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime10">Enter Split Time 10 (500m):</label>
+            <input type="text" id="splitTime10" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime11">Enter Split Time 11 (550m):</label>
+            <input type="text" id="splitTime11" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime12">Enter Split Time 12 (600m):</label>
+            <input type="text" id="splitTime12" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime13">Enter Split Time 13 (650m):</label>
+            <input type="text" id="splitTime13" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime14">Enter Split Time 14 (700m):</label>
+            <input type="text" id="splitTime14" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime15">Enter Split Time 15 (750m):</label>
+            <input type="text" id="splitTime15" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime16">Enter Split Time 16 (800m):</label>
+            <input type="text" id="splitTime16" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime17">Enter Split Time 17 (850m):</label>
+            <input type="text" id="splitTime17" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime18">Enter Split Time 18 (900m):</label>
+            <input type="text" id="splitTime18" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime19">Enter Split Time 19 (950m):</label>
+            <input type="text" id="splitTime19" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime20">Enter Split Time 20 (1000m):</label>
+            <input type="text" id="splitTime20" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime21">Enter Split Time 21 (1050m):</label>
+            <input type="text" id="splitTime21" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime22">Enter Split Time 22 (1100m):</label>
+            <input type="text" id="splitTime22" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime23">Enter Split Time 23 (1150m):</label>
+            <input type="text" id="splitTime23" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime24">Enter Split Time 24 (1200m):</label>
+            <input type="text" id="splitTime24" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime25">Enter Split Time 25 (1250m):</label>
+            <input type="text" id="splitTime25" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime26">Enter Split Time 26 (1300m):</label>
+            <input type="text" id="splitTime26" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime27">Enter Split Time 27 (1350m):</label>
+            <input type="text" id="splitTime27" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime28">Enter Split Time 28 (1400m):</label>
+            <input type="text" id="splitTime28" placeholder="mm:ss.ss or ss.ss">
+        </div>
+        <div class="form-group">
+            <label for="splitTime29">Enter Split Time 29 (1450m):</label>
+            <input type="text" id="splitTime29" placeholder="mm:ss.ss or ss.ss">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="totalTime">Enter Total Time (1500m):</label>
+        <input type="text" id="totalTime" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <button onclick="calculateLapTimes()">Calculate Lap Times</button>
+    <div class="lap-time-container">
+        <div class="lap-time-group" id="lapTimes50m"></div>
+        <div class="lap-time-group" id="lapTimes100m"></div>
+    </div>
+
+    <script>
+        function calculateLapTimes() {
+            // スプリットタイムの入力値を取得
+            const splitTimes = [];
+            for (let i = 1; i <= 29; i++) {
+                splitTimes.push(parseTimeInput(document.getElementById(`splitTime${i}`).value));
+            }
+            const totalTimeInput = parseTimeInput(document.getElementById("totalTime").value);
+
+            // スプリットタイムをパースする関数
+            function parseTimeInput(timeString) {
+                if (!timeString) return 0;
+                const timeParts = timeString.split(":");
+                if (timeParts.length === 1) {
+                    // ss.ss形式の場合
+                    return parseFloat(timeParts[0]);
+                } else if (timeParts.length === 2) {
+                    // mm:ss.ss形式の場合
+                    const minutes = parseInt(timeParts[0], 10);
+                    const seconds = parseFloat(timeParts[1]);
+                    return minutes * 60 + seconds;
+                }
+                return 0;
+            }
+
+            // 各50m区間のラップタイムの計算
+            const lapTimes50m = [];
+            for (let i = 0; i < 29; i++) {
+                if (i === 0) {
+                    lapTimes50m.push(splitTimes[i]); // 0m〜50m
+                } else {
+                    lapTimes50m.push(splitTimes[i] - splitTimes[i - 1]); // 前のスプリットタイムとの差を計算
+                }
+            }
+            lapTimes50m.push(totalTimeInput - splitTimes[28]); // 1450m〜1500m
+
+            // 各100m区間のラップタイムの計算
+            const lapTimes100m = [];
+            for (let i = 0; i < 14; i++) {
+                if (i === 0) {
+                    lapTimes100m.push(splitTimes[1]); // 0m〜100m
+                } else {
+                    lapTimes100m.push(splitTimes[2 * i + 1] - splitTimes[2 * (i - 1) + 1]); // 前の100mスプリットタイムとの差を計算
+                }
+            }
+            lapTimes100m.push(totalTimeInput - splitTimes[28]); // 1400m〜1500m
+
+            // 結果を表示
+            displayLapTimes(lapTimes50m, "lapTimes50m", "50m Lap Times", generateIntervalNames(50, 30));
+            displayLapTimes(lapTimes100m, "lapTimes100m", "100m Lap Times", generateIntervalNames(100, 15));
+        }
+
+        function displayLapTimes(lapTimes, containerId, title, intervalNames) {
+            const lapTimesContainer = document.getElementById(containerId);
+            lapTimesContainer.innerHTML = `<h3>${title}</h3>`;
+            for (let i = 0; i < lapTimes.length; i++) {
+                const lapTime = lapTimes[i];
+                const intervalName = intervalNames[i];
+                const p = document.createElement("p");
+                p.textContent = `${intervalName}: ${formatTime(lapTime)}`;
+                lapTimesContainer.appendChild(p);
+            }
+        }
+
+        function generateIntervalNames(interval, count) {
+            const names = [];
+            for (let i = 0; i < count; i++) {
+                names.push(`${i * interval}m〜${(i + 1) * interval}m`);
+            }
+            return names;
+        }
+
+        // タイムをフォーマットする関数
+        function formatTime(timeInSeconds) {
+            if (timeInSeconds >= 60) {
+                const minutes = Math.floor(timeInSeconds / 60);
+                const seconds = (timeInSeconds % 60).toFixed(2);
+                return `${minutes}:${seconds.padStart(5, '0')}`;
+            } else {
+                return `${timeInSeconds.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+

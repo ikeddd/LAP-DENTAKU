@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100m Lap Time Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .lap-time-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .lap-time-group {
+        flex: 1;
+        margin-right: 20px;
+    }
+    button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+    <h2>100m Lap Time Calculator</h2>
+    <div class="form-group">
+        <label for="splitTime1">Enter Split Time 1 (50m):</label>
+        <input type="text" id="splitTime1" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <div class="form-group">
+        <label for="totalTime">Enter Total Time (100m):</label>
+        <input type="text" id="totalTime" placeholder="mm:ss.ss or ss.ss">
+    </div>
+    <button onclick="calculateLapTimes()">Calculate Lap Times</button>
+    <div class="lap-time-container">
+        <div class="lap-time-group" id="lapTimes50m"></div>
+        <div class="lap-time-group" id="lapTimes100m"></div>
+    </div>
+
+    <script>
+        function calculateLapTimes() {
+            const splitTime1 = parseTimeInput(document.getElementById("splitTime1").value);
+            const totalTimeInput = parseTimeInput(document.getElementById("totalTime").value);
+
+            function parseTimeInput(timeString) {
+                if (!timeString) return 0;
+                const timeParts = timeString.split(":");
+                if (timeParts.length === 1) {
+                    return parseFloat(timeParts[0]);
+                } else if (timeParts.length === 2) {
+                    const minutes = parseInt(timeParts[0], 10);
+                    const seconds = parseFloat(timeParts[1]);
+                    return minutes * 60 + seconds;
+                }
+                return 0;
+            }
+
+            const lapTimes50m = [];
+            lapTimes50m.push(splitTime1);
+            lapTimes50m.push(totalTimeInput - splitTime1);
+
+            displayLapTimes(lapTimes50m, "lapTimes50m", "50m Lap Times", ["0m〜50m", "50m〜100m"]);
+            displayLapTimes([totalTimeInput], "lapTimes100m", "100m Lap Time", ["0m〜100m"]);
+        }
+
+        function displayLapTimes(lapTimes, containerId, title, intervalNames) {
+            const lapTimesContainer = document.getElementById(containerId);
+            lapTimesContainer.innerHTML = `<h3>${title}</h3>`;
+            for (let i = 0; i < lapTimes.length; i++) {
+                const lapTime = lapTimes[i];
+                const intervalName = intervalNames[i];
+                const p = document.createElement("p");
+                p.textContent = `${intervalName}: ${formatTime(lapTime)}`;
+                lapTimesContainer.appendChild(p);
+            }
+        }
+
+        function formatTime(timeInSeconds) {
+            if (timeInSeconds >= 60) {
+                const minutes = Math.floor(timeInSeconds / 60);
+                const seconds = (timeInSeconds % 60).toFixed(2);
+                return `${minutes}:${seconds.padStart(5, '0')}`;
+            } else {
+                return `${timeInSeconds.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+</html>
